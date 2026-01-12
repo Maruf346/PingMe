@@ -1,1 +1,15 @@
 .venv/
+
+staticfiles/
+/staticfiles/
+/static/staticfiles/
+
+# Django stuff
+*.log
+*.pot
+*.pyc
+
+# Python
+*.pyc
+__pycache__/
+*.pyo
