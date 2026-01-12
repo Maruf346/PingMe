@@ -3,6 +3,7 @@
 staticfiles/
 /staticfiles/
 /static/staticfiles/
+static/
 
 # Django stuff
 *.log
