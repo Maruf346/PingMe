@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     # Local apps
     'user',
     'api',
+    'chat',
 ]
 
 MIDDLEWARE = [
