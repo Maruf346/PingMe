@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'user',
     'api',
     'chat',
+    'notification',
 ]
 
 MIDDLEWARE = [

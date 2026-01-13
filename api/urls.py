@@ -7,7 +7,9 @@ from drf_spectacular.views import (
 
 
 urlpatterns = [
+    #path('auth/', include('user.urls')),
     path('chat/', include('chat.urls')),  
+    path('notifications/', include('notification.urls')),
     
     # Swagger UI
     path("schema/", SpectacularAPIView.as_view(), name="schema"),
