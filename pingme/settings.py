@@ -28,12 +28,18 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'user',
+    
+    # Third-party apps
     'rest_framework',
     'rest_framework.authtoken',
+    'rest_framework_simplejwt',
     'drf_spectacular',
     'drf_spectacular_sidecar',  # optional, for Swagger UI assets
     'django_filters',
+    
+    # Local apps
+    'user',
+    'api',
 ]
 
 MIDDLEWARE = [
@@ -95,6 +101,12 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTHENTICATION_BACKENDS = [
+    'user.backends.EmailOrUsernameModelBackend',
+    'django.contrib.auth.backends.ModelBackend',
+]
+
+AUTH_USER_MODEL = 'user.User'
 
 # Internationalization
 # https://docs.djangoproject.com/en/6.0/topics/i18n/
@@ -158,6 +170,28 @@ SPECTACULAR_SETTINGS =  {
 }
 
 
+# Simple JWT settings
+from datetime import timedelta
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(days=1),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=7),
+    'ROTATE_REFRESH_TOKENS': False,
+    'BLACKLIST_AFTER_ROTATION': True,
+    
+    'ALGORITHM': 'HS256',
+    'SIGNING_KEY': SECRET_KEY,
+    'VERIFYING_KEY': None,
+    'AUDIENCE': None,
+    'ISSUER': None,
+    
+    'AUTH_HEADER_TYPES': ('Bearer',),
+    'USER_ID_FIELD': 'id',
+    'USER_ID_CLAIM': 'user_id',
+    
+    'AUTH_TOKEN_CLASSES': ('rest_framework_simplejwt.tokens.AccessToken',),
+    'TOKEN_TYPE_CLAIM': 'token_type',
+}
 
 # Jazzmin settings
 
@@ -167,7 +201,7 @@ JAZZMIN_SETTINGS = {
     "site_brand": "PingMe",
     "site_logo": "images/logo.png",  # optional, we can skip for now
     "welcome_sign": "Welcome to the PingMe Admin Panel",
-    "copyright": "PingMe © 2024",
+    "copyright": "PingMe © 2026",
 
     # top-right user menu
     "user_avatar": None,
