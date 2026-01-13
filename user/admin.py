@@ -12,7 +12,6 @@ class CustomUserAdmin(UserAdmin):
         'is_staff',
         'is_active',
         'is_online',
-        'last_seen',
     )
     list_filter = ('is_staff', 'is_active', 'is_online')
     search_fields = ('email', 'username', 'first_name', 'last_name')
@@ -22,7 +21,7 @@ class CustomUserAdmin(UserAdmin):
         (None, {'fields': ('email', 'password')}),
         ('Personal Info', {'fields': ('username', 'first_name', 'last_name', 'phone_number', 'profile_picture', 'bio')}),
         ('Permissions', {'fields': ('is_active', 'is_staff', 'is_superuser', 'groups', 'user_permissions')}),
-        ('Status', {'fields': ('is_online', 'last_seen')}),
+        ('Status', {'fields': ('is_online',)}),
         ('Important dates', {'fields': ('last_login', 'date_joined')}),
     )
     
